@@ -17,8 +17,8 @@ public class Search extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_main);
 
-        ImageButton imageButton = (ImageButton) findViewById(R.id.search_btn);
-        imageButton.setOnClickListener(new View.OnClickListener() {
+        ImageButton searchBnt = (ImageButton) findViewById(R.id.search_btn);
+        searchBnt.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -32,6 +33,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
+    BuildConfig buildConfig;
     RecyclerView recyclerView;
     TextView welcomeTextView;
     EditText messageEditText;
@@ -48,11 +50,21 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        messageList = new ArrayList<>();
 
+        ImageButton gobackBnt = (ImageButton) findViewById(R.id.go_back);
+        gobackBnt.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Search.class);
+                startActivity(intent);
+            }
+        });
+
+
+        messageList = new ArrayList<>();
         recyclerView = findViewById(R.id.recycler_view);
         welcomeTextView = findViewById(R.id.welcome_text);
         messageEditText = findViewById(R.id.message_edit_text);
@@ -87,25 +99,34 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void addResponse(String response){
-        messageList.remove(messageList.size()-1);
+        messageList.remove(messageList.size()-1); //입력중... 지우기
         addTOChat(response,Message.SENT_BY_BOT);
 
     }
 
 
     void callAPI(String question){
+
         //okhttp
-        messageList.add(new Message("Typing...", Message.SENT_BY_BOT));
+        messageList.add(new Message("입력중...", Message.SENT_BY_BOT));
 
         JSONObject jsonBody = new JSONObject();
         try {
             jsonBody.put("model", "gpt-3.5-turbo");
 
             JSONArray messageArr = new JSONArray();
-            JSONObject obj = new JSONObject();
-            obj.put("role", "user");
-            obj.put("content", question);
-            messageArr.put(obj);
+            JSONObject obj_s = new JSONObject();
+            JSONObject obj_q = new JSONObject();
+            JSONObject obj_a = new JSONObject();
+
+            obj_s.put("role", "system");
+            obj_s.put("content", "예술작품에 대한 도슨트를 자세히 작성해줘");
+
+            obj_q.put("role", "user");
+            obj_q.put("content", question);
+
+            messageArr.put(obj_q);
+            messageArr.put(obj_s);
 
             jsonBody.put("messages", messageArr);
 
@@ -117,11 +138,12 @@ public class MainActivity extends AppCompatActivity {
         Request request = new Request.Builder()
                 .url("https://api.openai.com/v1/chat/completions")
                 .header("Content-Type", "application/json")
-                .header("Authorization", "Bearer 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")
+                .header("Authorization", buildConfig.CHATGPT_API_KEY)
                 .post(body)
                 .build();
 
         client.newCall(request).enqueue(new Callback() {
+
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
                 addResponse("Failed to load response due to " + e.getMessage());
