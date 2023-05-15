@@ -76,7 +76,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:gravity="center"
-        android:text="궁금한 내용을 추가로 질문해보세요"
+        android:text="궁금한 작품을 검색하세요"
         android:textSize="15dp" />
 
 
@@ -94,7 +94,7 @@
             android:layout_centerInParent="true"
             android:layout_toLeftOf="@id/send_btn"
             android:background="@drawable/rounded_corner"
-            android:hint="More questions"
+            android:hint="작품명/작가 검색"
             android:padding="16dp" />
 
         <ImageButton

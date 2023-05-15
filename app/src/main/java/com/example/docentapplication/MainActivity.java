@@ -6,9 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -63,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         messageList = new ArrayList<>();
         recyclerView = findViewById(R.id.recycler_view);
         welcomeTextView = findViewById(R.id.welcome_text);
@@ -77,14 +79,30 @@ public class MainActivity extends AppCompatActivity {
         llm.setStackFromEnd(true);
         recyclerView.setLayoutManager(llm);
 
+        getSearchText();
+
         sendButton.setOnClickListener((v)->{
             String question = messageEditText.getText().toString().trim();
-            addTOChat(question,Message.SENT_BY_ME);
+            if(question.length()!=0){
+                addTOChat(question,Message.SENT_BY_ME);
 //            Toast.makeText(this,question,Toast.LENGTH_LONG).show();
-            messageEditText.setText("");
-            callAPI(question);
-            welcomeTextView.setVisibility(View.GONE);
+                messageEditText.setText("");
+                callAPI(question);
+                welcomeTextView.setVisibility(View.GONE);
+            }
         });
+    }
+
+    void getSearchText(){
+
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        String searchTxt = bundle.getString("searchTxt");
+
+        String question = searchTxt.trim();
+        addTOChat(question, Message.SENT_BY_ME);
+        callAPI(question);
+        welcomeTextView.setVisibility(View.GONE);
     }
 
     void addTOChat(String message, String sentBy){
