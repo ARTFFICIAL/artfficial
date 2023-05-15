@@ -6,6 +6,11 @@ public class Message {
 
     String message;
     String sentBy;
+    Boolean isChecked;
+
+    public Boolean getChecked() { return isChecked; }
+
+    public void setChecked(Boolean checked) { this.isChecked = checked; }
 
     public String getMessage() {
         return message;
@@ -23,8 +28,9 @@ public class Message {
         this.sentBy = sentBy;
     }
 
-    public Message(String message, String sentBy) {
+    public Message(String message, String sentBy, Boolean isChecked) {
         this.message = message;
         this.sentBy = sentBy;
+        this.isChecked = isChecked;
     }
 }

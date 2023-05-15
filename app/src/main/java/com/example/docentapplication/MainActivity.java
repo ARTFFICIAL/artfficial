@@ -6,12 +6,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -43,6 +46,11 @@ public class MainActivity extends AppCompatActivity {
     ImageButton sendButton;
     List<Message> messageList;
     MessageAdapter messageAdapter;
+
+    CheckBox favoriteBtn;
+
+    public boolean isCheck[] = new boolean[50];
+
     public static final MediaType JSON
             = MediaType.get("application/json; charset=utf-8");
 
@@ -66,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
         messageList = new ArrayList<>();
         recyclerView = findViewById(R.id.recycler_view);
         welcomeTextView = findViewById(R.id.welcome_text);
@@ -84,32 +93,69 @@ public class MainActivity extends AppCompatActivity {
         sendButton.setOnClickListener((v)->{
             String question = messageEditText.getText().toString().trim();
             if(question.length()!=0){
-                addTOChat(question,Message.SENT_BY_ME);
+                addTOChat(question, Message.SENT_BY_ME, false);
 //            Toast.makeText(this,question,Toast.LENGTH_LONG).show();
                 messageEditText.setText("");
                 callAPI(question);
                 welcomeTextView.setVisibility(View.GONE);
             }
         });
+
     }
 
-    void getSearchText(){
+    void saveAnswer(){
+        LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View chatItemView = inflater.inflate(R.layout.chat_item, null);
 
+        CheckBox favoriteBtn = (CheckBox)chatItemView.findViewById(R.id.star_btn);
+
+        if(favoriteBtn.isChecked()){
+            TextView answerTxt = chatItemView.findViewById(R.id.left_chat_text_view);
+            TextView questionTxt = chatItemView.findViewById(R.id.right_chat_text_view);
+            String question = questionTxt.toString();
+            String answer = answerTxt.toString();
+        }
+
+        DBHelper helper;
+        SQLiteDatabase db;
+        helper = new DBHelper(MainActivity.this, "newdb.db", null, 1);
+        db = helper.getWritableDatabase();
+        helper.onCreate(db);
+
+        ContentValues values = new ContentValues();
+        values.put("name","HelloAlpaca");
+        values.put("contents","HelloAlpaca");
+        db.insert("mytable",null,values);
+    }
+
+
+
+    void getSearchText(){
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         String searchTxt = bundle.getString("searchTxt");
 
         String question = searchTxt.trim();
-        addTOChat(question, Message.SENT_BY_ME);
+        addTOChat(question, Message.SENT_BY_ME, false);
         callAPI(question);
         welcomeTextView.setVisibility(View.GONE);
     }
 
-    void addTOChat(String message, String sentBy){
+    void addTOChat(String message, String sentBy, Boolean isChecked){
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                messageList.add(new Message(message, sentBy));
+                messageList.add(new Message(message, sentBy, isChecked));
+                messageAdapter.notifyDataSetChanged();
+                recyclerView.smoothScrollToPosition(messageAdapter.getItemCount());
+            }
+        });
+    }
+
+    void checkedStarBtn(){
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
                 messageAdapter.notifyDataSetChanged();
                 recyclerView.smoothScrollToPosition(messageAdapter.getItemCount());
             }
@@ -118,15 +164,14 @@ public class MainActivity extends AppCompatActivity {
 
     void addResponse(String response){
         messageList.remove(messageList.size()-1); //입력중... 지우기
-        addTOChat(response,Message.SENT_BY_BOT);
-
+        addTOChat(response, Message.SENT_BY_BOT, false);
     }
 
 
     void callAPI(String question){
 
         //okhttp
-        messageList.add(new Message("입력중...", Message.SENT_BY_BOT));
+        messageList.add(new Message("입력중...", Message.SENT_BY_BOT, false));
 
         JSONObject jsonBody = new JSONObject();
         try {
@@ -138,7 +183,7 @@ public class MainActivity extends AppCompatActivity {
             JSONObject obj_a = new JSONObject();
 
             obj_s.put("role", "system");
-            obj_s.put("content", "예술작품에 대한 도슨트를 자세히 작성해줘");
+            obj_s.put("content", "예술작품에 대한 도슨트를 200자 이내로 작성해줘");
 
             obj_q.put("role", "user");
             obj_q.put("content", question);

@@ -1,8 +1,15 @@
 package com.example.docentapplication;
 
+import static androidx.core.content.ContextCompat.startActivity;
+
+import android.content.ContentValues;
+import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -14,6 +21,7 @@ import java.util.List;
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MyViewHolder> {
 
     List<Message> messageList;
+
     public MessageAdapter(List<Message> messageList) {
         this.messageList = messageList;
     }
@@ -26,9 +34,15 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MyViewHo
         return myViewHolder;
     }
 
+
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Message message = messageList.get(position);
+
+        holder.starBtn.setTag(position);
+        holder.leftChatTextView.setTag(position);
+        holder.rightChatTextView.setTag(position);
+
         if(message.getSentBy().equals(Message.SENT_BY_ME)){
             holder.leftChatView.setVisibility(View.GONE);
             holder.rightChatView.setVisibility(View.VISIBLE);
@@ -38,6 +52,26 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MyViewHo
             holder.leftChatView.setVisibility(View.VISIBLE);
             holder.leftChatTextView.setText(message.getMessage());
         }
+
+        holder.starBtn.setOnClickListener(new Button.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+
+                if(holder.starBtn.isChecked()){
+                    message.setChecked(true);
+                    String index = holder.rightChatTextView.getTag().toString();
+                    int idx = Integer.parseInt(index);
+                    System.out.println("별 확인하기 : " + holder.starBtn.getTag());
+                    System.out.println("답 인덱스 확인하기 : " + holder.leftChatTextView.getTag());
+                    System.out.println("답 확인하기 : " + holder.leftChatTextView.getText());
+                }else{
+                    message.setChecked(false);
+                }
+
+
+            }
+        });
 
     }
 
@@ -49,9 +83,11 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MyViewHo
     public class MyViewHolder extends RecyclerView.ViewHolder{
         LinearLayout leftChatView, rightChatView;
         TextView leftChatTextView, rightChatTextView;
+        CheckBox starBtn;
 
         public MyViewHolder(@NonNull View itemView){
             super(itemView);
+            starBtn = itemView.findViewById(R.id.star_btn);
             leftChatView = itemView.findViewById(R.id.left_chat_view);
             rightChatView = itemView.findViewById(R.id.right_chat_view);
             leftChatTextView = itemView.findViewById(R.id.left_chat_text_view);
