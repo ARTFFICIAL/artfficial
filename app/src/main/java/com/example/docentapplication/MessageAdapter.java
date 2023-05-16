@@ -51,7 +51,11 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MyViewHo
             holder.rightChatView.setVisibility(View.GONE);
             holder.leftChatView.setVisibility(View.VISIBLE);
             holder.leftChatTextView.setText(message.getMessage());
+            holder.starBtn.setChecked(message.getChecked());
+
         }
+
+
 
         holder.starBtn.setOnClickListener(new Button.OnClickListener(){
 
@@ -65,6 +69,8 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MyViewHo
                     System.out.println("별 확인하기 : " + holder.starBtn.getTag());
                     System.out.println("답 인덱스 확인하기 : " + holder.leftChatTextView.getTag());
                     System.out.println("답 확인하기 : " + holder.leftChatTextView.getText());
+                    System.out.println("답 확인하기 : " + holder.leftChatTextView.getText());
+
                 }else{
                     message.setChecked(false);
                 }
