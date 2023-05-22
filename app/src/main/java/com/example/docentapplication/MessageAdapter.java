@@ -2,7 +2,10 @@ package com.example.docentapplication;
 
 import static androidx.core.content.ContextCompat.startActivity;
 
+import static com.google.android.material.internal.ContextUtils.getActivity;
+
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
@@ -22,8 +25,12 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MyViewHo
 
     List<Message> messageList;
 
+    DBHelper helper;
+    SQLiteDatabase db;
+
     public MessageAdapter(List<Message> messageList) {
         this.messageList = messageList;
+//        this.context = context;
     }
 
     @NonNull
@@ -37,6 +44,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MyViewHo
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+
         Message message = messageList.get(position);
 
         holder.starBtn.setTag(position);
@@ -55,8 +63,6 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MyViewHo
 
         }
 
-
-
         holder.starBtn.setOnClickListener(new Button.OnClickListener(){
 
             @Override
@@ -64,15 +70,45 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MyViewHo
 
                 if(holder.starBtn.isChecked()){
                     message.setChecked(true);
+
                     String index = holder.rightChatTextView.getTag().toString();
                     int idx = Integer.parseInt(index);
-                    System.out.println("별 확인하기 : " + holder.starBtn.getTag());
-                    System.out.println("답 인덱스 확인하기 : " + holder.leftChatTextView.getTag());
-                    System.out.println("답 확인하기 : " + holder.leftChatTextView.getText());
-                    System.out.println("답 확인하기 : " + holder.leftChatTextView.getText());
+
+//                    System.out.println("별 확인하기 : " + holder.starBtn.getTag());
+//                    System.out.println("답 인덱스 확인하기 : " + holder.leftChatTextView.getTag());
+//                    System.out.println("답 확인하기 : " + holder.leftChatTextView.getText());
+                      System.out.println("질문 확인하기 : " + holder.rightChatTextView.getText());
+
+                    String starTag = holder.starBtn.getTag().toString();
+                    String answerTag = holder.leftChatTextView.getTag().toString();
+                    String question =  holder.rightChatTextView.getText().toString().trim();
+                    String answer =  holder.leftChatTextView.getText().toString().trim();
+
+                    if(question.contains("'") || answer.contains("'")){
+                        question = question.replace("'", "''");
+                    }
+                    if(answer.contains("'")){
+                        answer = answer.replace("'", "''");
+                    }
+
+                    DBHelper helper;
+                    SQLiteDatabase db;
+                    helper = new DBHelper(holder.itemView.getContext(), "myDB.db", null, 1);
+                    db = helper.getWritableDatabase();
+                    helper.onCreate(db);
+                    helper.insert(question, answer);
 
                 }else{
                     message.setChecked(false);
+
+                    String starTag = holder.starBtn.getTag().toString();
+                    String answerTag = holder.leftChatTextView.getTag().toString();
+                    String question =  holder.rightChatTextView.getText().toString().trim();
+                    String answer =  holder.leftChatTextView.getText().toString().trim();
+
+                    //지우기
+                    helper.Delete(question);
+
                 }
 
 

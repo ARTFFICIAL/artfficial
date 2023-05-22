@@ -1,7 +1,6 @@
 package com.example.docentapplication;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,13 +12,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -47,8 +43,6 @@ public class MainActivity extends AppCompatActivity {
     List<Message> messageList;
     MessageAdapter messageAdapter;
 
-    CheckBox favoriteBtn;
-
     public boolean isCheck[] = new boolean[50];
 
     public static final MediaType JSON
@@ -64,16 +58,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ImageButton gobackBnt = (ImageButton) findViewById(R.id.go_back);
-        gobackBnt.setOnClickListener(new View.OnClickListener() {
+        ImageButton gobackBtn = (ImageButton) findViewById(R.id.go_back);
+        gobackBtn.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Search.class);
+                Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
                 startActivity(intent);
             }
         });
-
 
         messageList = new ArrayList<>();
         recyclerView = findViewById(R.id.recycler_view);
@@ -183,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
             JSONObject obj_a = new JSONObject();
 
             obj_s.put("role", "system");
-            obj_s.put("content", "예술작품에 대한 도슨트를 200자 이내로 작성해줘");
+            obj_s.put("content", "예술작품에 대한 도슨트를 간단하게 작성해줘");
 
             obj_q.put("role", "user");
             obj_q.put("content", question);
