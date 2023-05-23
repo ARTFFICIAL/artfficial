@@ -70,18 +70,16 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MyViewHo
 
                 if(holder.starBtn.isChecked()){
                     message.setChecked(true);
-
-                    String index = holder.rightChatTextView.getTag().toString();
+                    String index = holder.leftChatTextView.getTag().toString();
                     int idx = Integer.parseInt(index);
 
-//                    System.out.println("별 확인하기 : " + holder.starBtn.getTag());
-//                    System.out.println("답 인덱스 확인하기 : " + holder.leftChatTextView.getTag());
-//                    System.out.println("답 확인하기 : " + holder.leftChatTextView.getText());
-                      System.out.println("질문 확인하기 : " + holder.rightChatTextView.getText());
+                    Message msg = (Message) messageList.get(idx-1);
+                    String question = msg.getMessage();
 
-                    String starTag = holder.starBtn.getTag().toString();
-                    String answerTag = holder.leftChatTextView.getTag().toString();
-                    String question =  holder.rightChatTextView.getText().toString().trim();
+                    System.out.println("질문 확인하기 : " + question);
+                    System.out.println("답 인덱스 확인하기 : " + holder.leftChatTextView.getTag());
+                    System.out.println("답 확인하기 : " + holder.leftChatTextView.getText());
+
                     String answer =  holder.leftChatTextView.getText().toString().trim();
 
                     if(question.contains("'") || answer.contains("'")){
