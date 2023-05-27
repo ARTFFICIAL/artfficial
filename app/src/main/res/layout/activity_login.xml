@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#2A092E"
+    tools:context=".activity_login">
+
+    <EditText
+        android:id="@+id/ed_id"
+        android:layout_width="210dp"
+        android:layout_height="50dp"
+        android:background="@drawable/rounded_corner"
+        android:backgroundTint="#D5C29D"
+        android:ems="10"
+        android:hint="id"
+        android:inputType="text"
+        android:padding="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/ed_PassWord"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/rounded_corner"
+        android:backgroundTint="#D5C29D"
+        android:ems="10"
+        android:hint="PassWord"
+        android:inputType="text"
+        android:padding="15dp"
+        app:layout_constraintEnd_toEndOf="@+id/ed_id"
+        app:layout_constraintStart_toStartOf="@+id/ed_id"
+        app:layout_constraintTop_toBottomOf="@+id/ed_id" />
+
+    <Button
+        android:id="@+id/ed_login"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="60dp"
+        android:backgroundTint="#EAB105"
+        android:padding="10dp"
+        android:text="Login"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/ed_PassWord"
+        app:layout_constraintStart_toStartOf="@+id/ed_PassWord"
+        app:layout_constraintTop_toBottomOf="@+id/ed_PassWord" />
+
+    <Button
+        android:id="@+id/ed_resister"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#EAB105"
+        android:padding="10dp"
+        android:text="Register"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/ed_login"
+        app:layout_constraintStart_toStartOf="@+id/ed_login"
+        app:layout_constraintTop_toBottomOf="@+id/ed_login" />
+
+    <TextView
+        android:id="@+id/welcome_text"
+        android:layout_width="380dp"
+        android:layout_height="122dp"
+        android:layout_centerInParent="true"
+        android:fontFamily="@font/master"
+        android:text="Welcome, \nmake the gallery your own"
+        android:textColor="@color/white"
+        android:textSize="50dp"
+        android:textStyle="normal"
+        app:layout_constraintTop_toBottomOf="@+id/logo_text"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <TextView
+        android:id="@+id/logo_text"
+        android:layout_width="380dp"
+        android:layout_height="122dp"
+        android:layout_centerInParent="true"
+        android:fontFamily="@font/master"
+        android:gravity="center"
+        android:shadowColor="#000000"
+        android:shadowDx="5"
+        android:shadowDy="5"
+        android:shadowRadius="10"
+        android:text="Af"
+        android:textColor="#CC9409"
+        android:textSize="50dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="DuplicateIds,MissingConstraints"
+        tools:layout_editor_absoluteY="-13dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

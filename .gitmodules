@@ -1,0 +1,3 @@
+[submodule "dosentapp"]
+	path = dosentapp
+	url = https://github.com/ssollxx/dosentapp.git

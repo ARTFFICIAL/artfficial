@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#2A092E" >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/ed_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="200dp"
+            android:layout_marginEnd="8dp"
+            android:ems="10"
+            android:hint="id"
+            android:background="@drawable/rounded_corner"
+            android:backgroundTint="#D5C29D"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:padding="15dp" />
+
+        <EditText
+            android:id="@+id/ed_PassWord"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:hint="PassWord"
+            android:background="@drawable/rounded_corner"
+            android:backgroundTint="#D5C29D"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="@+id/ed_id"
+            app:layout_constraintHorizontal_bias="0.417"
+            app:layout_constraintStart_toStartOf="@+id/ed_id"
+            app:layout_constraintTop_toBottomOf="@+id/ed_id"
+            android:padding="15dp"/>
+
+        <EditText
+            android:id="@+id/ed_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:ems="10"
+            android:hint="Name"
+            android:background="@drawable/rounded_corner"
+            android:backgroundTint="#D5C29D"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="@+id/ed_PassWord"
+            app:layout_constraintStart_toStartOf="@+id/ed_PassWord"
+            app:layout_constraintTop_toBottomOf="@+id/ed_PassWord"
+            android:padding="15dp"/>
+
+        <EditText
+            android:id="@+id/ed_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:ems="10"
+            android:hint="Age"
+            android:background="@drawable/rounded_corner"
+            android:backgroundTint="#D5C29D"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="@+id/ed_name"
+            app:layout_constraintStart_toStartOf="@+id/ed_name"
+            app:layout_constraintTop_toBottomOf="@+id/ed_name"
+            android:padding="15dp" />
+
+        <Button
+            android:id="@+id/btn_resister"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="52dp"
+            android:layout_marginEnd="8dp"
+            android:text="Register"
+            android:textColor="@color/black"
+            android:backgroundTint="#EAB105"
+            app:layout_constraintEnd_toEndOf="@+id/ed_age"
+            app:layout_constraintStart_toStartOf="@+id/ed_age"
+            app:layout_constraintTop_toBottomOf="@+id/ed_age"
+            android:padding="12dp" />
+
+        <TextView
+            android:id="@+id/logo_text"
+            android:layout_width="380dp"
+            android:layout_height="122dp"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="12dp"
+            android:fontFamily="@font/master"
+            android:gravity="center"
+            android:shadowColor="#000000"
+            android:shadowDx="5"
+            android:shadowDy="5"
+            android:shadowRadius="10"
+            android:text="Af"
+            android:textColor="#CC9409"
+            android:textSize="50dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="DuplicateIds,MissingConstraints"
+            tools:layout_editor_absoluteY="-19dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
