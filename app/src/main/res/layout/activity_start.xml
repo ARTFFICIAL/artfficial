@@ -305,9 +305,8 @@
         android:layout_gravity="right"
         android:layout_marginRight="10dp"
         android:layout_weight="1"
-        android:background="@android:color/transparent"
         android:src="@drawable/next"
-        android:text="next"
+        android:text="시작하기"
         />
 
 </LinearLayout>
