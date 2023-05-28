@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
         Request request = new Request.Builder()
                 .url("https://api.openai.com/v1/chat/completions")
                 .header("Content-Type", "application/json")
-                .header("Authorization", "Bearer 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")
+                .header("Authorization", "Bearer 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")
                 .post(body)
                 .build();
 
