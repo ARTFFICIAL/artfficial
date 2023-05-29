@@ -4,92 +4,108 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SearchActivity">
+    tools:context=".Search">
 
     <RelativeLayout
         android:id="@+id/menu_bar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="0dp"
-        >
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="8dp">
 
         <ImageButton
             android:id="@+id/btn_searchlist"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_alignParentStart="true"
             android:layout_centerInParent="true"
             android:layout_marginStart="10dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:padding="8dp"
-            android:src="@drawable/ic_baseline_list_24" />
+            android:src="@drawable/ic_baseline_list_24"
+            android:backgroundTint= "#E197D9" />
 
         <ImageButton
             android:id="@+id/btn_profile"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_alignParentEnd="true"
             android:layout_centerInParent="true"
             android:layout_marginEnd="10dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:padding="8dp"
-            android:src="@drawable/ic_baseline_manage_accounts_24" />
+            android:src="@drawable/ic_baseline_manage_accounts_24"
+            app:tint="#E197D9" />
 
     </RelativeLayout>
-
-
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="0dp"
+        android:background="#2A092E"
         />
 
     <TextView
+        android:id="@+id/welcome_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/welcome_text"
         android:layout_above="@id/search_bar"
-        android:text="ARTFFICIAL"
+        android:layout_centerInParent="true"
+        android:fontFamily="@font/master"
         android:gravity="center"
-        android:textSize="28dp"
-        />
+        android:shadowColor="#000000"
+        android:shadowDx="5"
+        android:shadowDy="5"
+        android:shadowRadius="10"
+        android:text="ARTFFICIAL"
+        android:textColor="#CC9409"
+        android:textSize="70dp"
+        android:textStyle="bold" />
 
     <RelativeLayout
+        android:id="@+id/search_bar"
         android:layout_width="320dp"
         android:layout_height="80dp"
         android:layout_centerInParent="true"
-        android:padding="8dp"
-        android:id="@+id/search_bar">
+        android:padding="8dp">
 
         <EditText
             android:id="@+id/search_message_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="0dp"
             android:layout_toLeftOf="@id/search_btn"
             android:background="@drawable/rounded_corner"
+            android:backgroundTint="#D5C29D"
             android:hint="Search"
-            android:padding="16dp" />
+            android:padding="15dp" />
+
         <ImageButton
             android:id="@+id/search_btn"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_alignParentEnd="true"
-            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
             android:layout_marginStart="10dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:padding="8dp"
-            android:src="@drawable/ic_baseline_search_24" />
-
-
-
-
+            android:src="?android:attr/actionModeWebSearchDrawable"
+            app:tint="#2A092E" />
 
     </RelativeLayout>
 
 
 
 </RelativeLayout>
+
+
+
+
+
+
+

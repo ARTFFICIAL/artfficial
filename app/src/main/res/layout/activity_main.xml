@@ -10,29 +10,33 @@
         android:id="@+id/menu_bar"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_alignParentTop="true">
+        android:layout_alignParentTop="true"
+        android:background="#9E8F59"
+        >
 
         <ImageButton
             android:id="@+id/btn_searchlist"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_alignParentEnd="true"
             android:layout_centerInParent="true"
             android:layout_marginEnd="10dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:padding="8dp"
-            android:src="@drawable/ic_baseline_list_24" />
+            android:src="@drawable/ic_baseline_list_24"
+            app:tint="#2A092E" />
 
         <ImageButton
             android:id="@+id/go_back"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_alignParentStart="true"
             android:layout_centerInParent="true"
             android:layout_marginStart="10dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:padding="8dp"
-            android:src="@drawable/ic_baseline_arrow_back_ios_24" />
+            android:src="@drawable/ic_baseline_home_24"
+            app:tint="#2A092E" />
 
     </RelativeLayout>
 
@@ -68,24 +72,31 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/bottom_layout"
-        android:layout_below="@id/menu_bar" />
+        android:layout_below="@id/menu_bar"
+        android:background="#2A092E"
+        />
 
     <TextView
         android:id="@+id/welcome_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        android:fontFamily="@font/boo"
         android:gravity="center"
-        android:text="궁금한 작품을 검색하세요"
-        android:textSize="15dp" />
+        android:text="Ask additional questions about the artwork description"
+        android:textColor="#CC9409"
+        android:textSize="30dp" />
+
 
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="70dp"
         android:layout_alignParentBottom="true"
-        android:padding="8dp"
-        android:id="@+id/bottom_layout">
+        android:padding="10dp"
+        android:id="@+id/bottom_layout"
+        android:background="#9E8F59"
+        >
 
         <EditText
             android:id="@+id/message_edit_text"
@@ -93,23 +104,22 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_toLeftOf="@id/send_btn"
+            android:backgroundTint="#D5C29D"
             android:background="@drawable/rounded_corner"
-            android:hint="작품명/작가 검색"
+            android:hint="More questions"
             android:padding="16dp" />
 
         <ImageButton
             android:id="@+id/send_btn"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_alignParentEnd="true"
             android:layout_centerInParent="true"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="5dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:padding="8dp"
-            android:src="@drawable/ic_baseline_send_24" />
-
-
-
+            android:padding="40dp"
+            android:src="@android:drawable/ic_menu_send"
+            app:tint="#402F04" />
     </RelativeLayout>
 
 

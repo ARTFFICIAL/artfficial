@@ -1,10 +1,5 @@
 package com.example.docentapplication;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -16,6 +11,11 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -36,6 +36,7 @@ import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
     BuildConfig buildConfig;
+
     RecyclerView recyclerView;
     TextView welcomeTextView;
     EditText messageEditText;
@@ -63,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Search.class);
                 startActivity(intent);
             }
         });
@@ -211,11 +212,11 @@ public class MainActivity extends AppCompatActivity {
                     JSONObject jasonObject = null;
                     try {
                         jasonObject = new JSONObject(response.body().string());
-                            JSONArray jsonArray = jasonObject.getJSONArray("choices");
-                            String result = jsonArray.getJSONObject(0)
-                                            .getJSONObject("message")
-                                                    .getString("content");
-                            addResponse(result.trim());
+                        JSONArray jsonArray = jasonObject.getJSONArray("choices");
+                        String result = jsonArray.getJSONObject(0)
+                                .getJSONObject("message")
+                                .getString("content");
+                        addResponse(result.trim());
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

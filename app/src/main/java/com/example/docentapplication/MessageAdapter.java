@@ -1,12 +1,5 @@
 package com.example.docentapplication;
 
-import static androidx.core.content.ContextCompat.startActivity;
-
-import static com.google.android.material.internal.ContextUtils.getActivity;
-
-import android.content.ContentValues;
-import android.content.Context;
-import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.View;
