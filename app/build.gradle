@@ -23,7 +23,6 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField "String", "CHATGPT_API_KEY", properties["chatGPT_api_key"]
     }
 
     buildTypes {
