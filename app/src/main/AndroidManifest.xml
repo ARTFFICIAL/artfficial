@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <!-- 인터넷 권한 설정 -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 인터넷 연결 확인 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.DocentApplication"
+        tools:overrideLibrary="androidx.wear.tiles.material"
+        tools:targetApi="33">
+
+        <activity
+            android:name=".activity_login"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Login"></activity>
+        <activity
+            android:name=".Search"
+            android:exported="true" />
+        <activity android:name=".MainActivity" />
+    </application>
+
+    <queries>
+        <package android:name="com.google.ar.lens" /><!--GoogleLens -->
+    </queries>
+
+</manifest>

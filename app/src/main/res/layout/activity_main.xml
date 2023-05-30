@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:id="@+id/menu_bar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentTop="true"
+        android:background="#9E8F59"
+        >
+
+        <ImageButton
+            android:id="@+id/btn_searchlist"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:layout_marginEnd="10dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="8dp"
+            android:src="@drawable/ic_baseline_list_24"
+            app:tint="#2A092E" />
+
+        <ImageButton
+            android:id="@+id/go_back"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="10dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="8dp"
+            android:src="@drawable/ic_baseline_home_24"
+            app:tint="#2A092E" />
+
+    </RelativeLayout>
+
+<!--    <RelativeLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@id/menu_bar"-->
+<!--            android:id="@+id/top_layout">-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentTop="true"-->
+<!--            android:padding="8dp"-->
+<!--            android:id="@+id/result_layout"-->
+<!--            android:background="@drawable/rounded_corner"-->
+<!--            android:backgroundTint="@color/material_dynamic_tertiary80"-->
+<!--            android:layout_margin="13dp">-->
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:id="@+id/result_layout_text_view"-->
+<!--                android:textColor="#410091"-->
+<!--                android:textSize="18sp"-->
+<!--                android:textIsSelectable="true"-->
+<!--                />-->
+
+<!--        </LinearLayout>-->
+<!--    </RelativeLayout>-->
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom_layout"
+        android:layout_below="@id/menu_bar"
+        android:background="#2A092E"
+        />
+
+    <TextView
+        android:id="@+id/welcome_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:fontFamily="@font/boo"
+        android:gravity="center"
+        android:text="Ask additional questions about the artwork description"
+        android:textColor="#CC9409"
+        android:textSize="30dp" />
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:padding="10dp"
+        android:id="@+id/bottom_layout"
+        android:background="#9E8F59"
+        >
+
+        <EditText
+            android:id="@+id/message_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_toLeftOf="@id/send_btn"
+            android:backgroundTint="#D5C29D"
+            android:background="@drawable/rounded_corner"
+            android:hint="More questions"
+            android:padding="16dp" />
+
+        <ImageButton
+            android:id="@+id/send_btn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="5dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="40dp"
+            android:src="@android:drawable/ic_menu_send"
+            app:tint="#402F04" />
+    </RelativeLayout>
+
+
+
+</RelativeLayout>
