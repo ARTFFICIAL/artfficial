@@ -177,7 +177,10 @@ public class MainActivity extends AppCompatActivity {
             JSONObject obj_a = new JSONObject();
 
             obj_s.put("role", "system");
-            obj_s.put("content", "예술작품에 대한 도슨트를 간단하게 작성해줘");
+            obj_s.put("content",
+                    "예술작품에 대한 도슨트를 정확하게 작성해줘. "
+                            + "글이 끊기면 이어서 써줘. "
+                            + "작품사진을 볼 수 있는 구글링크를 첨부해줘.");
 
             obj_q.put("role", "user");
             obj_q.put("content", question);
@@ -195,7 +198,7 @@ public class MainActivity extends AppCompatActivity {
         Request request = new Request.Builder()
                 .url("https://api.openai.com/v1/chat/completions")
                 .header("Content-Type", "application/json")
-                .header("Authorization", "Bearer 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" )
+                .header("Authorization", "Bearer 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" )
                 .post(body)
                 .build();
 
