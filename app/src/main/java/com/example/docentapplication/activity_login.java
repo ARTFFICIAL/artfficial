@@ -38,7 +38,7 @@ public class activity_login extends AppCompatActivity {
         ed_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
-                Intent intent = new Intent(activity_login.this, Search.class);
+                Intent intent = new Intent(activity_login.this, StartActivity.class);
                 startActivity(intent);
             String userID = ed_id.getText().toString();
             String userPassword = ed_PassWord.getText().toString();
