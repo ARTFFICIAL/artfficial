@@ -69,6 +69,37 @@ public class DBHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    public List<String> getData() {
+        List<String> dataList1 = new ArrayList<>();
+        //List<String> dataList3 = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM "+Table_Name + ";", null);
+
+        if(cursor.moveToFirst()) {
+            do {
+                String text = cursor.getString(0);
+                dataList1.add(text);
+            }while(cursor.moveToNext());
+        }
+        cursor.close();
+        return dataList1;
+    }
+    public List<String> getData2() {
+        List<String> dataList2 = new ArrayList<>();
+        //List<String> dataList3 = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM "+Table_Name + ";", null);
+
+        if(cursor.moveToFirst()) {
+            do {
+                String text = cursor.getString(1);
+                dataList2.add(text);
+            }while(cursor.moveToNext());
+        }
+        cursor.close();
+        return dataList2;
+    }
+  /*
     public void SelectAll (){
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -86,7 +117,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
     }
-    /*
+
        // 데이터 불러오기
        public ArrayList getDB() {
            ArrayList mk_info = new ArrayList<String>();

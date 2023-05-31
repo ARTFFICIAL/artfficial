@@ -1,11 +1,13 @@
 package com.example.docentapplication;
 
+import android.app.Activity;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ActionMenuView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -23,7 +25,111 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import static android.widget.CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER;
+
 public class SaveChatActivity extends AppCompatActivity {
+
+    DBHelper dbHelper;
+    SQLiteDatabase db;
+    ListView listView1, listView2;
+    TextView textView1, textView2;
+    ArrayAdapter<String> adapter1, adapter2;
+
+    List<String> dataList1, dataList2, dataList3;
+    //String[] strs = new String[]{DBHelper.COLUMN_TITLE};
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.listview);
+
+        listView1 = findViewById(R.id.listview1);
+        listView2 = findViewById(R.id.listview2);
+        dataList1 = new ArrayList<>();
+        dataList2 = new ArrayList<>();
+        dbHelper = new DBHelper(this);
+
+        dataList1 = dbHelper.getData();
+        dataList2 = dbHelper.getData2();
+        adapter1 = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, dataList1);
+        listView1.setAdapter(adapter1);
+        adapter2 = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, dataList2);
+        listView2.setAdapter(adapter2);
+    }
+}
+/*
+        listView = findViewById(android.R.layout.simple_list_item_1);
+
+
+        //listView = (ListView) findViewById(R.id.listview);
+        textView1 = (TextView) findViewById(R.id.textview1);
+        textView2 = (TextView) findViewById(R.id.textview2);
+
+        dbHelper = new DBHelper(this);
+        db = dbHelper.getReadableDatabase();
+        dbHelper.onCreate(db);
+
+        String sql = "SELECT * FROM " + DBHelper.Table_Name + ";";
+        Cursor cursor = db.rawQuery(sql, null);
+
+        while (cursor.moveToNext()) {
+            String name = cursor.getString(0);
+            String contents = cursor.getString(1);
+            textView1.setText(textView1.getText() + "\n" + name + "\n");
+            textView2.setText(textView2.getText() + "\n" + contents + "\n");
+        }
+
+        //dbHelper.close();
+        db.close();
+        cursor.close();
+    }
+}
+
+
+extends Activity {
+    ListView listView;
+    DBHelper dbHelper;
+    SQLiteDatabase db;
+    String sql;
+    Cursor cursor;
+
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.listview);
+
+        listView = (ListView) findViewById(R.id.listview);
+        dbHelper = new DBHelper(this);
+
+        SelectAllDB();
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                cursor.moveToPosition(position);
+                String str = cursor.getString(0);
+                Toast.makeText(getApplicationContext(), str, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
+    private void SelectAllDB() {
+        db = dbHelper.getReadableDatabase();
+        sql = "SELECT * FROM " + DBHelper.Table_Name + ";";
+        cursor = db.rawQuery(sql, null);
+
+        if(cursor.getCount()>0) {
+            DBAdapter dbAdapter = new DBAdapter(this, cursor, FLAG_REGISTER_CONTENT_OBSERVER);
+            listView.setAdapter(dbAdapter);
+        }
+        cursor.close();
+        db.close();
+    }
+
+
+}*/
+
+        /*extends AppCompatActivity {
 
     DBHelper dbHelper;
     SQLiteDatabase db;
@@ -49,16 +155,17 @@ public class SaveChatActivity extends AppCompatActivity {
         String sql = "SELECT * FROM " + DBHelper.Table_Name + ";";
         Cursor cursor = db.rawQuery(sql, null);
 
-        while(cursor.moveToNext()) {
+        while (cursor.moveToNext()) {
             String name = cursor.getString(0);
             String contents = cursor.getString(1);
-            textView1.setText(textView1.getText()+"\n"+name +"\n");
-            textView2.setText(textView2.getText()+"\n"+contents+"\n");
+            textView1.setText(textView1.getText() + "\n" + name + "\n");
+            textView2.setText(textView2.getText() + "\n" + contents + "\n");
         }
 
         //dbHelper.close();
         db.close();
         cursor.close();
+    }
 
 //        textView.setVisibility(View.GONE);
 //
@@ -78,7 +185,7 @@ public class SaveChatActivity extends AppCompatActivity {
 //        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,
 //                android.R.layout.simple_list_item_1, strs);
 //        listView.setAdapter(arrayAdapter);
-    }
+
 
 //    @Override
 //    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -150,7 +257,7 @@ public class SaveChatActivity extends AppCompatActivity {
 //        ListView listView = findViewById(R.id.listview);
  //       listView.setAdapter(adapter);
  //   }
-}
+
 /*
     String sql,data;
 
