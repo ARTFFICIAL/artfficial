@@ -5,23 +5,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".SaveChatActivity"
     android:orientation="horizontal">
-    <ScrollView
+
+    <TextView
+        android:id="@+id/textview1"
         android:layout_width="match_parent"
-        android:layout_height="30dp">
-        <TextView
-            android:id="@+id/textview1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fontFamily="casual"
-            android:hint="title"
-            android:maxLines="3"
-            android:paddingLeft="10dp"
-            android:paddingTop="10dp"
-            android:textColor="@color/white"
-            android:textSize="20sp" />
-
-    </ScrollView>
-
+        android:layout_height="match_parent"
+        android:fontFamily="casual"
+        android:hint="title"
+        android:maxLines="3"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
 
 <!--    <ListView-->
 <!--        android:layout_width="match_parent"-->

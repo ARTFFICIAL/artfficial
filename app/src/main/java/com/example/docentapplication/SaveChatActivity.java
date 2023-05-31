@@ -1,11 +1,13 @@
 package com.example.docentapplication;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
+import android.app.AlertDialog;
 import android.view.View;
 import android.widget.ActionMenuView;
 import android.widget.AdapterView;
@@ -55,6 +57,33 @@ public class SaveChatActivity extends AppCompatActivity {
         listView1.setAdapter(adapter1);
         adapter2 = new ArrayAdapter<>(this, R.layout.save_chat, R.id.textview1, dataList2);
         listView2.setAdapter(adapter2);
+
+        listView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // 클릭한 항목에 해당하는 내용을 AlertDialog로 표시
+                String selectedItem = dataList1.get(position);
+                showAlertDialog(selectedItem);
+            }
+        });
+
+    }
+    private void showAlertDialog(String selectedItem) {
+        // dataList2에서 selectedItem에 해당하는 내용 가져오기
+        int index = dataList1.indexOf(selectedItem);
+        String content = dataList2.get(index);
+
+        // AlertDialog 생성
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(selectedItem)
+                .setMessage(content)
+                .setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // 확인 버튼 클릭 시 동작할 내용 작성
+                    }
+                })
+                .show();
     }
 }
 /*
