@@ -50,15 +50,7 @@ public class DBHelper extends SQLiteOpenHelper {
         cv.put(COLUMN_CONTENTS, contents);
 
         db.insert(Table_Name, null, cv);
-        //db.execSQL("INSERT INTO " + Table_Name + " VALUES ('" + name + "', '" + contents + "');");
-        /*if (result == -1)
-        {
-            Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
-        }
-        else
-        {
-            Toast.makeText(context, "데이터 추가 성공", Toast.LENGTH_SHORT).show();
-        }*/
+
         db.close();
     }
 
@@ -69,88 +61,34 @@ public class DBHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void SelectAll (){
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        Cursor cs = db.query(Table_Name, null,null,null,null,
-                null,null);
-        while(cs.moveToNext()){
-            System.out.println(cs.getString(0)+ " " + cs.getString(1));
-        }
-        //ContentValues cv = new ContentValues();
-        //db.execSQL("SELECT * FROM "+ Table_Name );
-        db.close();
-
-//        cv.get(COLUMN_TITLE, name);
-//        cv.get(COLUMN_CONTENTS, content);
-
-
-    }
-    /*
-       // 데이터 불러오기
-       public ArrayList getDB() {
-           ArrayList mk_info = new ArrayList<String>();
-
-           String sql = "SELECT * FROM " + Table_Name;
-
-           Cursor cursor = getWritableDatabase().rawQuery(sql,null);
-           if(cursor!=null && cursor.moveToFirst()){
-               do {
-                   mk_info.add(cursor.getString(1));
-               }while(cursor.moveToNext());
-           }
-
-           cursor.close();
-
-           return mk_info;
-
-           //DB open
-           SQLiteDatabase db = getReadableDatabase();
-
-           Cursor cursor = db.rawQuery("Select * from " + Table_Name, null);
-
-           while(cursor.moveToNext()) {
-               mk_info.add(cursor.getString(0)
-                       +"\n"
-                       +mk_info.add(cursor.getString(1)));
-           }
-           return mk_info;
-
-
-       }
-
-    public static List<ListViewAdapterData> selectAllmark() {
-        List<ListViewAdapterData> mkList = new ArrayList<ListViewAdapterData>();
-
-        String sql = "SELECT * FROM " + Table_Name +";";
-
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        Cursor cursor = db.rawQuery(sql, null);
+    public List<String> getData2() {
+        List<String> dataList2 = new ArrayList<>();
+        //List<String> dataList3 = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM "+Table_Name + ";", null);
 
         if(cursor.moveToFirst()) {
             do {
-                mkList.add(new ListViewAdapterData(cursor.getString(0), cursor.getString(1)));
-            }while (cursor.moveToNext());
+                String text = cursor.getString(1);
+                dataList2.add(text);
+            }while(cursor.moveToNext());
         }
         cursor.close();
-        db.close();
+        return dataList2;
+    }
+    public List<String> getData() {
+        List<String> dataList1 = new ArrayList<>();
+        //List<String> dataList3 = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM "+Table_Name + ";", null);
 
-        return mkList;
-    } */
-
-//    public void getDB() {
-//        ArrayList mk_info = new ArrayList<String>();
-//
-//        String sql = "SELECT * FROM " + Table_Name;
-//
-//        Cursor cursor = getWritableDatabase().rawQuery(sql, null);
-//        if (cursor != null && cursor.moveToFirst()) {
-//            do {
-//                mk_info.add(cursor.getString(1));
-//            } while (cursor.moveToNext());
-//        }
-//
-//        cursor.close();
-//    }
+        if(cursor.moveToFirst()) {
+            do {
+                String text = cursor.getString(0);
+                dataList1.add(text);
+            }while(cursor.moveToNext());
+        }
+        cursor.close();
+        return dataList1;
+    }
 }
