@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#2A092E"
     android:orientation="vertical"
     tools:context=".StartActivity"
     >
@@ -35,6 +36,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:textColor="#CC9409"
                         android:id="@+id/pic8"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -43,6 +45,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:textColor="#CC9409"
                         android:id="@+id/artist8"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -70,6 +73,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:textColor="#CC9409"
                         android:id="@+id/pic7"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -78,6 +82,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:textColor="#CC9409"
                         android:id="@+id/artist7"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -105,6 +110,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:textColor="#CC9409"
                         android:id="@+id/pic6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -113,6 +119,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:textColor="#CC9409"
                         android:id="@+id/artist6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -140,6 +147,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:textColor="#CC9409"
                         android:id="@+id/pic5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -148,6 +156,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:textColor="#CC9409"
                         android:id="@+id/artist5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -175,6 +184,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:textColor="#CC9409"
                         android:id="@+id/pic4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -183,6 +193,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:textColor="#CC9409"
                         android:id="@+id/artist4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -210,6 +221,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:textColor="#CC9409"
                         android:id="@+id/pic3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -218,6 +230,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:textColor="#CC9409"
                         android:id="@+id/artist3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -245,6 +258,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:textColor="#CC9409"
                         android:id="@+id/pic2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -253,6 +267,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:textColor="#CC9409"
                         android:id="@+id/artist2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -280,6 +295,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:textColor="#CC9409"
                         android:id="@+id/pic1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -288,6 +304,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:textColor="#CC9409"
                         android:id="@+id/artist1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
