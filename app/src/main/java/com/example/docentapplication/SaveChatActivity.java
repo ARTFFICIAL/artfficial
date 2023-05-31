@@ -51,9 +51,9 @@ public class SaveChatActivity extends AppCompatActivity {
 
         dataList1 = dbHelper.getData();
         dataList2 = dbHelper.getData2();
-        adapter1 = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, dataList1);
+        adapter1 = new ArrayAdapter<>(this, R.layout.save_chat, R.id.textview1, dataList1);
         listView1.setAdapter(adapter1);
-        adapter2 = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, dataList2);
+        adapter2 = new ArrayAdapter<>(this, R.layout.save_chat, R.id.textview1, dataList2);
         listView2.setAdapter(adapter2);
     }
 }

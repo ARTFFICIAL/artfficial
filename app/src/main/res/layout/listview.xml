@@ -3,6 +3,8 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#2A092E"
+    android:textColor="#FFFFFF"
     android:padding="10dp"
     android:paddingLeft="10dp"
     android:paddingRight="10dp"
