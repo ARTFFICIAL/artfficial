@@ -16,7 +16,7 @@ android {
         versionCode 1
         versionName "1.0"
 
-        buildConfigField "String", "CHATGPT_API_KEY", '"Bearer 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"'
+//        buildConfigField "String", "CHATGPT_API_KEY", '"Bearer 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"'
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
