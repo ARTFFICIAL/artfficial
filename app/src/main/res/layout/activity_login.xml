@@ -70,13 +70,13 @@
         android:layout_height="122dp"
         android:layout_centerInParent="true"
         android:fontFamily="@font/master"
-        android:text="Welcome, \nmake the gallery your own"
+        android:text="Welcome, \nmake my own gallery! "
         android:textColor="@color/white"
         android:textSize="50dp"
         android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logo_text"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="16dp" />
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/logo_text"
