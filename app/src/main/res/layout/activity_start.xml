@@ -22,9 +22,9 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:gravity="center"
-            android:text="ARTFFICIAL에서 다양한 예술작품을 검색해보세요."
+            android:text="[ARTFFICIAL에서 다양한 예술작품을 검색해보세요]"
             android:textColor="#CC9409"
-            android:textSize="16dp" />
+            android:textSize="18dp" />
     </RelativeLayout>
 
     <ScrollView
@@ -58,6 +58,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="감자 먹는 사람들"
+                        android:fontFamily="@font/boo"
                         android:textColor="#FFC107"
                         android:textSize="30dp"
                         android:textStyle="bold" />
@@ -95,6 +96,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="세속적인 쾌락의 동산"
+                        android:fontFamily="@font/boo"
                         android:textColor="#FFC107"
                         android:textSize="30dp"
                         android:textStyle="bold" />
@@ -132,6 +134,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="키스 (The kiss)"
+                        android:fontFamily="@font/boo"
                         android:textColor="#FFC107"
                         android:textSize="30dp"
                         android:textStyle="bold" />
@@ -169,6 +172,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="비너스의 탄생"
+                        android:fontFamily="@font/boo"
                         android:textColor="#FFC107"
                         android:textSize="30dp"
                         android:textStyle="bold" />
@@ -206,6 +210,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="진주귀걸이를 한 소녀"
+                        android:fontFamily="@font/boo"
                         android:textColor="#FFC107"
                         android:textSize="30dp"
                         android:textStyle="bold" />
@@ -243,6 +248,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="모나리자"
+                        android:fontFamily="@font/boo"
                         android:textColor="#FFC107"
                         android:textSize="30dp"
                         android:textStyle="bold" />
@@ -281,6 +287,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="그랑자트의 일요일"
+                        android:fontFamily="@font/boo"
                         android:textColor="#FFC107"
                         android:textSize="30dp"
                         android:textStyle="bold" />
@@ -318,6 +325,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="자화상"
+                        android:fontFamily="@font/boo"
                         android:textColor="#FFC107"
                         android:textSize="30dp"
                         android:textStyle="bold" />
@@ -342,7 +350,7 @@
         android:layout_height="65dp"
         android:layout_gravity="center"
         android:layout_marginTop="5dp"
-        android:backgroundTint="#F6CE57"
+        android:backgroundTint="#FFC107"
         android:text="Start"
         android:textColor="@color/black"/>
 
