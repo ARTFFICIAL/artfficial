@@ -9,12 +9,13 @@
     <TextView
         android:id="@+id/textview1"
         android:layout_width="match_parent"
-        android:layout_height="35dp"
         android:fontFamily="casual"
-        android:hint="title"
         android:maxLines="3"
         android:paddingLeft="10dp"
         android:paddingTop="10dp"
         android:textColor="@color/white"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:layout_height="35dp"
+        android:layout_marginBottom="5dp"
+        android:background="#3E2242"/>
 </LinearLayout>
