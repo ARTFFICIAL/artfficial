@@ -28,7 +28,7 @@ public class SaveChatActivity extends AppCompatActivity {
     DBHelper dbHelper;
     SQLiteDatabase db;
     ListView listView;
-    TextView textView;
+    TextView textView1, textView2;
     ArrayAdapter<String> adapter;
 
     String[] strs = new String[]{DBHelper.COLUMN_TITLE};
@@ -38,8 +38,9 @@ public class SaveChatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.save_chat);
 
-        listView = (ListView) findViewById(R.id.listview);
-        textView = (TextView) findViewById(R.id.textview);
+        //listView = (ListView) findViewById(R.id.listview);
+        textView1 = (TextView) findViewById(R.id.textview1);
+        textView2 = (TextView) findViewById(R.id.textview2);
 
         dbHelper = new DBHelper(this);
         db = dbHelper.getReadableDatabase();
@@ -51,7 +52,8 @@ public class SaveChatActivity extends AppCompatActivity {
         while(cursor.moveToNext()) {
             String name = cursor.getString(0);
             String contents = cursor.getString(1);
-            textView.setText(textView.getText()+"\n"+name+"\t"+contents +"\n");
+            textView1.setText(textView1.getText()+"\n"+name +"\n");
+            textView2.setText(textView2.getText()+"\n"+contents+"\n");
         }
 
         //dbHelper.close();
