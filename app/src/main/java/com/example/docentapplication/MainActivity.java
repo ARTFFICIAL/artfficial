@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     ImageButton sendButton;
     List<Message> messageList;
     MessageAdapter messageAdapter;
+    DBHelper dbHelper;
 
     public boolean isCheck[] = new boolean[50];
 
@@ -58,6 +59,29 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        dbHelper = new DBHelper(this);
+
+        ImageButton btn_mark = (ImageButton) findViewById(R.id.mark);
+        btn_mark.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent mintent = new Intent(getApplicationContext(), SaveChatActivity.class);
+                startActivity(mintent);
+
+//                SQLiteDatabase db = dbHelper.getReadableDatabase();
+//
+//                String sql = "SELECT * FROM "+dbHelper.Table_Name +";";
+//                Cursor cursor = db.rawQuery(sql, null);
+//
+//                while (cursor.moveToNext()){
+//                    String name = cursor.getString(0);
+//                    String content = cursor.getString(1);
+//                    tv
+//                }
+//                cursor.close();
+//                db.close();
+            }
+        });
 
         ImageButton gobackBtn = (ImageButton) findViewById(R.id.go_back);
         gobackBtn.setOnClickListener(new View.OnClickListener() {
@@ -112,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
 
         DBHelper helper;
         SQLiteDatabase db;
-        helper = new DBHelper(MainActivity.this, "newdb.db", null, 1);
+        helper = new DBHelper(MainActivity.this);
         db = helper.getWritableDatabase();
         helper.onCreate(db);
 
@@ -198,7 +222,7 @@ public class MainActivity extends AppCompatActivity {
         Request request = new Request.Builder()
                 .url("https://api.openai.com/v1/chat/completions")
                 .header("Content-Type", "application/json")
-                .header("Authorization", "Bearer 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" )
+                .header("Authorization", "Bearer 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" )
                 .post(body)
                 .build();
 

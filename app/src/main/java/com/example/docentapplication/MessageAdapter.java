@@ -84,7 +84,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MyViewHo
 
                     DBHelper helper;
                     SQLiteDatabase db;
-                    helper = new DBHelper(holder.itemView.getContext(), "myDB.db", null, 1);
+                    helper = new DBHelper(holder.itemView.getContext());
                     db = helper.getWritableDatabase();
                     helper.onCreate(db);
                     helper.insert(question, answer);

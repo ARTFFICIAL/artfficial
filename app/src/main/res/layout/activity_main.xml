@@ -13,6 +13,17 @@
         android:layout_alignParentTop="true"
         android:background="#9E8F59"
         >
+        <ImageButton
+            android:id="@+id/mark"
+            android:layout_width="61dp"
+            android:layout_height="57dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="46dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="3dp"
+            android:background="#00000000"
+            android:src="@drawable/baseline_star_border_24" />
 
         <ImageButton
             android:id="@+id/btn_searchlist"
