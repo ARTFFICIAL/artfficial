@@ -36,7 +36,6 @@ import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
     BuildConfig buildConfig;
-
     RecyclerView recyclerView;
     TextView welcomeTextView;
     EditText messageEditText;
@@ -222,7 +221,7 @@ public class MainActivity extends AppCompatActivity {
         Request request = new Request.Builder()
                 .url("https://api.openai.com/v1/chat/completions")
                 .header("Content-Type", "application/json")
-                .header("Authorization", "Bearer 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" )
+                .header("Authorization", buildConfig.GPT_API)
                 .post(body)
                 .build();
 
