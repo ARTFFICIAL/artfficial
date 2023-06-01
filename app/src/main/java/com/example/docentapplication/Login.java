@@ -28,9 +28,9 @@ public class Login extends AppCompatActivity {
 
         //아이디 값 찾아주기
         ed_id = findViewById(R.id.ed_id);
-        ed_id = findViewById(R.id.ed_PassWord);
-        ed_id = findViewById(R.id.ed_name);
-        ed_id = findViewById(R.id.ed_age);
+        ed_PassWord = findViewById(R.id.ed_PassWord);
+        ed_name = findViewById(R.id.ed_name);
+        ed_age = findViewById(R.id.ed_age);
 
         //회원가입 버튼 클릭시 수행
         btn_resister = findViewById(R.id.btn_resister);
@@ -42,7 +42,31 @@ public class Login extends AppCompatActivity {
                 String userID = ed_id.getText().toString();
                 String userPassword = ed_PassWord.getText().toString();
                 String userName = ed_name.getText().toString();
-                int userAge = Integer.parseInt(ed_age.getText().toString());
+                //int userAge = Integer.parseInt(ed_age.getText().toString()); //--여기부터--------------
+                String input = ed_age.getText().toString();
+
+                if (!input.isEmpty()) {
+
+                    try {
+                        int number = Integer.parseInt(input);
+                        // 정수값인 경우 처리할 로직 작성
+                        // 숫자 범위 체크
+                        if (number >= 1 && number <= 100) {
+                            // 범위에 해당하는 동작 수행
+                            // TODO: 숫자 범위에 맞는 동작 구현
+                        } else {
+                            // 범위에 해당하지 않는 경우 처리
+                            Toast.makeText(getApplicationContext(), "1부터 100 사이의 숫자를 입력하세요.", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                    } catch (NumberFormatException e) {
+                        // 정수값이 아닌 경우 처리
+                        Toast.makeText(getApplicationContext(), "나이에 정수값을 입력하세요.", Toast.LENGTH_SHORT).show();
+                    }
+
+                }else{
+                    return;
+                }   //--------여기까지--------
 
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
 
@@ -61,8 +85,10 @@ public class Login extends AppCompatActivity {
                                 toastText.setTextColor(Color.RED);
                                 toast.show();
 
-                                Intent intent = new Intent(Login.this, activity_login.class);
-                                startActivity(intent);
+
+
+
+
                             } else {
                                 Toast toast = Toast.makeText(Login.this, "회원 등록에 실패하였습니다.",
                                         Toast.LENGTH_SHORT);
@@ -83,10 +109,23 @@ public class Login extends AppCompatActivity {
                 //서버로 Volley이용해서 요청하기
                 // resisterRe = new ResisterRe(userID, userPassword, userName, userAge, responseListener);
 
-                ResisterRe resisterRe = new
-                        ResisterRe(userID, userPassword, userName, userAge, responseListener);
-                RequestQueue queue = Volley.newRequestQueue(Login.this);
-                queue.add(resisterRe);
+                int userAge = 0;  //------여기부터----------
+                try {
+                    userAge = Integer.parseInt(input);
+                    // 정수값인 경우 처리할 로직 작성
+                    ResisterRe resisterRe = new
+                            ResisterRe(userID, userPassword, userName, userAge, responseListener);
+                    RequestQueue queue = Volley.newRequestQueue(Login.this);
+                    queue.add(resisterRe);
+
+                    Intent intent = new Intent(Login.this, activity_login.class);
+                    startActivity(intent);
+                    // 숫자 범위 체크
+
+                } catch (NumberFormatException e) {
+                    // 정수값이 아닌 경우 처리
+                }//=----여기까지----
+
             }
         });
     }

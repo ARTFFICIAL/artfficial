@@ -193,12 +193,12 @@ public class MainActivity extends AppCompatActivity {
 
         JSONObject jsonBody = new JSONObject();
         try {
-            jsonBody.put("model", "gpt-3.5-turbo");
-
             JSONArray messageArr = new JSONArray();
             JSONObject obj_s = new JSONObject();
             JSONObject obj_q = new JSONObject();
             JSONObject obj_a = new JSONObject();
+
+            jsonBody.put("model", "gpt-3.5-turbo");
 
             obj_s.put("role", "system");
             obj_s.put("content",
@@ -222,7 +222,7 @@ public class MainActivity extends AppCompatActivity {
         Request request = new Request.Builder()
                 .url("https://api.openai.com/v1/chat/completions")
                 .header("Content-Type", "application/json")
-                .header("Authorization", "Bearer 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" )
+                .header("Authorization", "Bearer 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" )
                 .post(body)
                 .build();
 

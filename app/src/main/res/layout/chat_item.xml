@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/left_chat_text_view"
             android:textColor="@color/black"
-            android:textSize="23dp"
+            android:textSize="20dp"
             android:textIsSelectable="true"
             android:maxWidth="260dp"
             />
@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/right_chat_text_view"
             android:textColor="@color/black"
-            android:textSize="25sp"
+            android:textSize="20dp"
             android:textIsSelectable="true"/>
     </LinearLayout>
 

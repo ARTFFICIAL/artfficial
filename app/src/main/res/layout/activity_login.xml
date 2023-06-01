@@ -9,7 +9,7 @@
 
     <EditText
         android:id="@+id/ed_id"
-        android:layout_width="210dp"
+        android:layout_width="220dp"
         android:layout_height="50dp"
         android:background="@drawable/rounded_corner"
         android:backgroundTint="#D5C29D"
@@ -25,7 +25,7 @@
 
     <EditText
         android:id="@+id/ed_PassWord"
-        android:layout_width="wrap_content"
+        android:layout_width="220dp"
         android:layout_height="50dp"
         android:layout_marginTop="30dp"
         android:background="@drawable/rounded_corner"

@@ -102,7 +102,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="80dp"
         android:layout_alignParentBottom="true"
         android:padding="10dp"
         android:id="@+id/bottom_layout"
@@ -115,8 +115,8 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_toLeftOf="@id/send_btn"
-            android:backgroundTint="#D5C29D"
             android:background="@drawable/rounded_corner"
+            android:backgroundTint="#D5C29D"
             android:hint="More questions"
             android:padding="16dp" />
 
